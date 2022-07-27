@@ -1,0 +1,398 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+/*------------------------------------------------------------
+	NAVBAR
+-------------------------------------------------------------*/
+
+.navbar{
+    background-color: #fff;
+}
+
+.logo{
+    width: 20rem;
+}
+
+.logo img{
+    width: 100%;
+}
+
+.navbar-toggler{
+    border: .3rem;
+    color: #aed373;
+}
+  
+.navbar-toggler i{
+    color: #aed373;
+    font-size: 2.5rem;
+}
+
+.nav-link, .icon{
+    color: #071931;
+    transition: .3s;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.nav-link:hover, .icon:hover{
+    color: #aed373;
+}
+
+.pct{
+    color: #fff;
+    background-color: #445baa;
+    transition: .5s;
+    font-weight: 500;
+}
+
+.pct:hover{
+    background-color: #aed373;
+}
+
+/*------------------------------------------------------------
+	BODY
+-------------------------------------------------------------*/
+
+.body{
+    background-color: #f9fff0;
+    width: 100%;
+    border-radius: 3rem;
+}
+
+.corp{
+    padding-top: 5%;
+}
+
+.corp h1{
+    color: #445baa;
+}
+
+.corp2 h5 {
+    color: #9d9d9d;
+}
+
+.tout{
+    border-radius: .3rem;
+    background-color: #fff;
+}
+
+.choisi{
+    border: none;
+    padding: 1rem;
+    color: #9d9d9d;
+}
+
+
+
+/*------------------------------------------------------------
+	WORK
+-------------------------------------------------------------*/
+
+.wb{
+    font-weight: 600;
+}
+
+.corp p{
+    color: #9d9d9d;
+    width: 75%;
+}
+
+.corp span{
+    color: #aed373;
+}
+
+.body-card{
+    background-color: #f9fff0;
+    border-radius: 3rem;
+}
+
+.corp2{
+    margin-top: 3%;
+    padding-bottom: 5%;
+}
+
+.date h1{
+    color: #000000;
+    font-weight: 600;
+}
+
+.date p{
+    color: #9d9d9d;
+    text-align: justify;
+}
+
+/*------------------------------------------------------------
+	FIND
+-------------------------------------------------------------*/
+
+.find-content p{
+    color: #9d9d9d;
+    text-align: right;
+    width: 65%;
+}
+
+.btn-circle {
+    background-color: #fff;
+    padding: 1rem 1.6rem;
+    border-radius: 3.5rem;
+    font-size: 2.4rem;
+    line-height: 1.33;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*------------------------------------------------------------
+	RECENT
+-------------------------------------------------------------*/
+
+.item{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.job-card{
+    background-color: #f9fff0;
+    border-radius: 3rem;
+    width: 100%;
+}
+
+.jimage{
+    width: 6rem;
+}
+
+.jimage img{
+    width: 100%;
+}
+
+.tit, .role{
+    color: #000000;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.loc, .pay{
+    color: #9d9d9d;
+    font-size: 1.5rem;
+}
+
+.type{
+    color: #aed373;
+    font-size: 1.5rem;
+}
+
+.req{
+    color: #445baa;
+    font-size: 1.5rem;
+}
+
+.learn{
+    color: #445baa;
+    border: .2rem solid #445baa;
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+.learn:hover{
+    background-color: #445baa;
+    color: #fff;
+}
+
+.apply{
+    color: #ffffff;
+    transition: .3s;
+    border-radius: .5rem;
+    background: #aed373;
+}
+
+.apply:hover{
+    color: #aed373;
+    border: .2rem solid #aed373;
+    background: none;
+}
+
+.owl-prev span, .owl-next span {
+	color: #aed373;
+    font-size: 5rem;
+    padding: 1rem 1.6rem;
+}
+
+.owl-prev, .owl-next {
+	position: absolute;
+	top: -5rem;
+}
+
+.owl-prev {
+	right: 10rem;
+}
+
+.owl-next {
+	right: 5rem;
+}
+
+
+/*------------------------------------------------------------
+	SUBSCRIBE
+-------------------------------------------------------------*/
+
+.subscribe{
+    margin-top: 10rem;
+    background-color: #f2fafa;
+}
+
+.notify button{
+    background-color: #445baa;
+    border: none;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-weight: 500;
+    transition: .3s;
+    padding: 1rem 4rem;
+}
+
+.notify button:hover{
+    background-color: #aed373;
+    color: #445baa;
+}
+
+
+/*------------------------------------------------------------
+	MILIEU
+-------------------------------------------------------------*/
+
+.milieu{
+    padding-bottom: 3rem;
+    margin-top: 5rem;
+}
+
+.job-new-list{
+    background-color: #ffffff;
+	border: 1px solid #e7ebf1;
+    border-radius: .4rem;
+    margin-bottom: 3rem;
+    padding: 3rem 3rem 2.5rem;
+	position:relative;
+    transition: all 0.3s ease 0s;
+}
+
+
+.job-new-list:hover, .job-new-list:focus{
+	border-color:#aed373;
+	box-shadow:0px 5px 10px 0px rgba(130,136,184,0.2);
+}
+
+.active.nav-link{
+    color: #445baa !important;
+    background-color: #aed373 !important;
+}
+
+.active.nav-link:hover{
+    background-color: #445baa !important;
+    color: #aed373 !important;
+}
+
+.pagination{
+    padding: 2rem;
+    border: solid 1px #ddd;
+    margin-top: 3rem;
+}
+
+.avec{
+    background-color: #445baa;
+    color: #ffffff;
+    border-radius: .3rem;
+    padding: 1rem;
+}
+
+.avec:hover{
+    background-color: #aed373;
+    color: #445baa;
+}
+
+.sans{
+    border-radius: .3rem;
+    padding: 1rem;
+}
+
+
+/*------------------------------------------------------------
+	FILTER
+-------------------------------------------------------------*/
+
+.filter{
+    font-weight: 600;
+}
+
+.appliquer .btn{
+    padding:0.8rem 3rem;
+    color: #fff;
+    background-color: #445baa;
+    transition: .3s;
+    font-weight: 500;
+}
+
+.appliquer .btn:hover{
+	color:#445baa;
+    background-color: #aed373;
+}
+
+/*------------------------------------------------------------
+	FOOTER
+-------------------------------------------------------------*/
+
+.footer{
+    background-color: #f9fff0;
+}
+
+.footer-content{
+    padding: 5rem;
+}
+
+.logo2{
+    width: 20rem;
+}
+
+.logo2 img{
+    width: 100%;
+}
+
+.bottom p{
+    color: #000000;
+    font-size: 1.5rem;
+}
+
+.quick h2{
+    color: #000000;
+}
+
+.quick li{
+    margin-top: 1rem;
+}
+
+.quick a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.5rem
+}
+
+.quick a:hover{
+    color: #445baa;
+}
+
+
+
+
