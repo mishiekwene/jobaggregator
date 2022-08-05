@@ -91,6 +91,7 @@ class Jobs(models.Model):
     sal_freq = models.CharField('sal_freq', max_length=20, null=True)
     avg_sal = models.FloatField('avg_sal', null=True)
     date_posted = models.CharField('date_posted', max_length=50, null=True)
+    city = models.CharField('city', max_length=100, null=True)
     county = models.CharField('county', max_length=100, null=True)
     state = models.CharField('state', max_length=100, null=True)
     job_type1 = models.CharField('job_type1', max_length=100, null=True)

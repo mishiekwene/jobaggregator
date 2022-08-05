@@ -1,0 +1,303 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Job Aggregator</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md sticky-top p-5">
+    <div class="container-fluid">
+        <a class="logo" href="{%url 'main:home'%}"><img src="{%static 'img/logo.png'%}" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbar">
+          <div class="nav-end">
+            <ul class="navbar-nav ms-5">
+              <li class="nav-item">
+                <a class="nav-link fs-4 ms-5" href="{%url 'main:home'%}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-4 ms-5" href="{%url 'main:skill-search'%}">Recommended Skills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-4 ms-5" href="https://public.tableau.com/app/profile/sebansaldo/viz/FinalXDimensin/Pres_Dimensiones" target="_blank">Statistics</a>
+              </li>
+
+            </ul>
+          </div>
+          <div>
+            <a class="btn btn-lg pct fs-4 ms-5" href="{%url 'main:search'%}" role="button">Perfect Job?</a>
+          </div>
+        </div>
+  </div>
+  </nav>
+
+  <div class="body container">
+    <div class="container text-center corp">
+      <h1 class="display-1 fw-bold">Find Your <br><span>Perfect Job</span> Match</h1>
+      <p class="fs-3 m-auto">JobAggregator helps you find your perfect job 
+        match by giving you full details of the exact job searched for by using the available 
+        categories, showing also recommended jobs and skills needed to learn.</p>
+    </div>
+    <div class="container corp2">
+      <form action="{%url 'main:skill-search'%}">
+        <div class="row p-2 border border-1 tout">
+          <div class="col-lg-3 col-md-4">
+            <div class="form-group ">
+              <select class="form-select fs-5 choisi" name="category" aria-label="Default select example">
+                <option value="job_role" selected>Job Role</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group fs-4 watch">
+              <select id="multiple" class="form-select" name="title">
+                {%if title%}
+                <option value="{{title}}" selected>{{title}}</option>
+                {%endif%}
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-2"><button class="btn btn-lg pct fs-4 ms-5" type="submit">Search</button></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <div class="milieu">
+      <div class="container pt-5 mt-5">
+        <div class="row">
+          <div class="col-lg-12 no-border">
+            <ul class="nav nav-tabs border-0 oya" id="myTab">
+                <li class="nav-item  sabi">
+                    <a href="#perfect" class="nav-link border-0 active h2" data-bs-toggle="tab">Skill Gap(Upgrade Skill)</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-5">
+                <div class="tab-pane  show active" id="perfect">
+                  {%for i in page_obj%}
+                  <div class="job-new-list">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <div class="d-flex">
+                          <div class="jimage me-3">
+                            <img class="img-fluid" src="{%static 'img/Tailwind.png'%}" alt="logo">
+                          </div>
+                          <div class="jtext mb-5">
+                            <p class="tit">{{i.techskills}}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div>
+                          <div class="mt-5">
+                            <a href="#" class="btn btn-lg border border-2 apply fs-3">Click to learn</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {%endfor%}
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end fs-4">
+                {%if page_obj.has_previous%}
+                <li class="page-item">
+                  <a class="page-link avec" href="?{{url1}}&page={{page_obj.previous_page_number}}">Previous</a>
+                </li>
+                {%endif%}
+                <li class="page-item"><a class="page-link sans ms-5" href="?{{url1}}&page=1">1</a></li>
+                {%if page_obj.has_next%}
+                <li class="page-item mx-2"><a class="page-link sans" href="?{{url1}}&page={{page_obj.next_page_number}}">{{page_obj.next_page_number}}</a></li>
+                <li class="page-item">
+                  <a class="page-link avec" href="?{{url1}}&page={{page_obj.next_page_number}}">Next</a>
+                </li>
+                {%endif%}
+              </ul>
+            </nav>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subscribe container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-9 mx-auto text-center mt-5 mb-5">
+            <h1 class="display-3">Newsletter Subscription</h1>
+            <h4>Subscribe to our newsletter to get new jobs and projects</h4>
+            <div class="form-group mt-5">
+              <input type="email" id="email" class="form-control text-center fs-3 p-3" placeholder="Enter Your Email">
+            </div>
+            <div class="notify mt-5">
+              <button type="button" class="btn-lg fs-3">Subscribe</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 bottom">
+              <div class="logo2">
+                <a href="{%url 'main:home'%}"><img src="{%static 'img/logo.png'%}" alt="Compliance Medicals"></a>
+              </div>
+              <p class="mt-4 w-75">Jobaggregator helps you find your perfect job match by giving you 
+                necessary job details suited for you.</p>
+              <p class="mt-4">jobaggregator© 2022. All Rights Reserved.</p>
+              
+            </div>
+            <div class="col-lg-2 quick">
+              <ul class="nav flex-column ">
+                <li class="enav-item">
+                  <a class="enav-link" href="{%url 'main:home'%}">About</a>
+                </li>
+                <li class="enav-item">
+                  <a class="enav-link" href="{%url 'main:skill-search'%}">Recommended SKills</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-2 quick">
+              <ul class="nav flex-column">
+                <li class="enav-item">
+                  <a href="mailto:help@jobaggregator.com">help@jobaggregator.com</a>
+                </li>
+                <li class="enav-item">
+                  <a href="mailto:info@jobaggregator.com">info@jobaggregator.com</a>
+                </li>
+                <li class="enav-item">
+                  <a href="tel:+0123 456 7890">Call Us: 0999 9999 9999</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <script src="{%static 'js/scrpt.js'%}"></script>
+    <script src="{%static 'js/bootstrap.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+      $("#multiple").select2({
+        ajax: {
+                type: 'GET',
+                url: function(params){
+                    var url = 'search-index'
+                    return url
+                }
+                ,
+                dataType: 'json',
+                data:
+                    function(params){
+                        var query={
+                            search:params.term,
+                            type_search:$('.choisi').val()
+                        }
+                        return query;
+                    },
+                
+            processResults:function(data){
+                return {
+                    results: $.map(data, function(item){
+                      
+                        return {
+                            text: item.text,
+                            id : item.id
+                        }
+                    })
+                }
+            }},
+
+          placeholder: "Search",
+          allowClear: true,
+          maximumSelectionLength: 1
+          
+      });
+    </script>
+    <script>
+      $('.owl-carousel').owlCarousel({
+          loop: true,
+          margin: 15,
+          nav: true,
+          responsive: {
+              300: {
+                  items: 1,
+              },
+              
+              600: {
+                  items: 2,
+              },
+
+              1000: {
+                  items: 3
+              }
+          }
+      })
+  </script>
+  <script>
+    var show = true;
+
+    function showCheckboxes() {
+        var checkboxes = 
+            document.getElementById("checkBoxes");
+
+        if (show) {
+            checkboxes.style.display = "block";
+            show = false;
+        } else {
+            checkboxes.style.display = "none";
+            show = true;
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

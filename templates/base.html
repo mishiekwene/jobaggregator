@@ -34,11 +34,12 @@
                   <a class="nav-link fs-4 ms-5" href="{%url 'main:home'%}">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fs-4 ms-5" href="{%url 'main:home'%}">Blog</a>
+                  <a class="nav-link fs-4 ms-5" href="{%url 'main:skill-search'%}">Recommended Skills</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fs-4 ms-5" href="{%url 'main:home'%}">Contact Us</a>
+                  <a class="nav-link fs-4 ms-5" href="https://public.tableau.com/app/profile/sebansaldo/viz/FinalXDimensin/Pres_Dimensiones" target="_blank">Statistics</a>
                 </li>
+
               </ul>
             </div>
             <div>
@@ -61,14 +62,28 @@
             <div class="col-lg-3 col-md-4">
               <div class="form-group ">
                 <select class="form-select fs-5 choisi" name="category" aria-label="Default select example">
-                  <option value="job_role">Job Role</option>                
+                  {%if category == 'job_role'%}
+                  <option value="job_role" selected>Job Role</option>
+                  <option value="hard_skill">Skills</option>
+                  {%elif category == 'hard_skill'%}
                   <option value="hard_skill" selected>Skills</option>
+                  <option value="job_role">Job Role</option>
+                  {%else%}
+                  <option value="job_role">Job Role</option>
+                  <option value="hard_skill" selected>Skills</option>
+                  {%endif%}
+
                 </select>
               </div>
             </div>
             <div class="col-lg-6 col-md-6">
               <div class="form-group fs-4 watch">
                 <select id="search" class="form-select" name="searches" multiple>
+                  {%if skills%}
+                  {%for i in skills%}
+                  <option value="{{i}}" selected>{{i}}</option>
+                  {%endfor%}
+                  {%endif%}
                 </select>
               </div>
             </div>
@@ -89,79 +104,63 @@
 
 
     <div class="subscribe container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-9 mx-auto text-center mt-5 mb-5">
+            <h1 class="display-3">Newsletter Subscription</h1>
+            <h4>Subscribe to our newsletter to get new jobs and projects</h4>
+            <div class="form-group mt-5">
+              <input type="email" id="email" class="form-control text-center fs-3 p-3" placeholder="Enter Your Email">
+            </div>
+            <div class="notify mt-5">
+              <button type="button" class="btn-lg fs-3">Subscribe</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-content">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 col-md-9 mx-auto text-center mt-5 mb-5">
-              <h1 class="display-3">Newsletter Subscription</h1>
-              <h4>Subscribe to our newsletter to get new jobs and projects</h4>
-              <div class="form-group mt-5">
-                <input type="email" id="email" class="form-control text-center fs-3 p-3" placeholder="Enter Your Email">
+            <div class="col-lg-6 bottom">
+              <div class="logo2">
+                <a href="{%url 'main:home'%}"><img src="{%static 'img/logo.png'%}" alt="Compliance Medicals"></a>
               </div>
-              <div class="notify mt-5">
-                <button type="button" class="btn-lg fs-3">Subscribe</button>
-                </div>
+              <p class="mt-4 w-75">Jobaggregator helps you find your perfect job match by giving you 
+                necessary job details suited for you.</p>
+              <p class="mt-4">jobaggregator©2022. All Rights Reserved.</p>
+              
+            </div>
+            <div class="col-lg-2 quick">
+              <ul class="nav flex-column ">
+                <li class="enav-item">
+                  <a class="enav-link" href="{%url 'main:home'%}">About</a>
+                </li>
+                <li class="enav-item">
+                  <a class="enav-link" href="{%url 'main:skill-search'%}">Recommended Skills</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-2 quick">
+              <ul class="nav flex-column">
+                <li class="enav-item">
+                  <a href="mailto:help@jobaggregator.com">help@jobaggregator.com</a>
+                </li>
+                <li class="enav-item">
+                  <a href="mailto:info@jobaggregator.com">info@jobaggregator.com</a>
+                </li>
+                <li class="enav-item">
+                  <a href="tel:+0123 456 7890">Call Us: 00 9999 9999</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-  
-      <div class="footer">
-        <div class="footer-content">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6 bottom">
-                <div class="logo2">
-                  <a href="{%url 'main:home'%}"><img src="{%static 'img/logo.png'%}" alt="Compliance Medicals"></a>
-                </div>
-                <p class="mt-4 w-75">Jobaggregator helps you find your perfect job match by giving you 
-                  necessary job details suited for you.</p>
-                <p class="mt-4">Job Search © 2022. All Rights Reserved.</p>
-                
-              </div>
-              <div class="col-lg-2 quick">
-                <ul class="nav flex-column mt-3">
-                  <li class="enav-item">
-                    <a class="enav-link" href="{%url 'main:home'%}">About</a>
-                  </li>
-                  <li class="enav-item">
-                    <a class="enav-link" href="{%url 'main:home'%}">Blog</a>
-                  </li>
-                  <li class="enav-item">
-                    <a class="enav-link" href="{%url 'main:home'%}">Contact Us</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-2 quick">
-                <ul class="nav flex-column mt-3">
-                  <li class="enav-item">
-                    <a class="enav-link" href="{%url 'main:home'%}">Twitter</a>
-                  </li>
-                  <li class="enav-item">
-                    <a class="enav-link" href="{%url 'main:home'%}">Instagram</a>
-                  </li>
-                  <li class="enav-item">
-                    <a class="enav-link" href="{%url 'main:home'%}">Facebook</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-2 quick">
-                <ul class="nav flex-column mt-3">
-                  <li class="enav-item">
-                    <a href="mailto:help@jobaggregator.com">help@jobaggregator.com</a>
-                  </li>
-                  <li class="enav-item">
-                    <a href="mailto:sales@jobaggregator.com">sales@jobaggregator.com</a>
-                  </li>
-                  <li class="enav-item">
-                    <a href="tel:+0123 456 7890">Call Us: 0123 456 7890</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
+      
+    </div>
       
       {%block javascript%}
       {%block extra_javascript%}
@@ -172,6 +171,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
       <script>
+        var skills = '{{skills}}'
+        var skill_list = skills.match(/[A-Z][a-z]*/g)
         $("#search").select2({
             ajax: {
                 type: 'GET',
@@ -189,6 +190,7 @@
                         }
                         return query;
                     },
+                
             processResults:function(data){
                 return {
                     results: $.map(data, function(item){
@@ -203,7 +205,8 @@
             placeholder: "Search",
             allowClear: true,
             width: '100%',
-            tags:true
+            tags:true,
+        
             
         });
       </script>
@@ -227,6 +230,24 @@
             }
         })
     </script>
+      <script>
+        var show = true;
+    
+        function showCheckboxes() {
+            var checkboxes = 
+                document.getElementById("checkBoxes");
+    
+            if (show) {
+                checkboxes.style.display = "block";
+                show = false;
+            } else {
+                checkboxes.style.display = "none";
+                show = true;
+            }
+        }
+    </script>
+    
     {%endblock javascript%}
   </body>
   </html>
+  

@@ -53,6 +53,17 @@ body{
     color: #aed373;
 }
 
+.sup{
+    background-color: #aed373;
+    transition: .5s;
+    font-weight: 500;
+}
+
+.sup:hover{
+    color: #fff;
+    background-color: #445baa;
+}
+
 .pct{
     color: #fff;
     background-color: #445baa;
@@ -93,10 +104,67 @@ body{
 
 .choisi{
     border: none;
-    padding: 1rem;
+    padding: .8rem;
     color: #9d9d9d;
+    font-size: 1.5rem;
 }
 
+.choisi option{
+    font-size: 1.5rem;
+}
+
+.choisi option:hover{
+    background-color: #aed373;
+}
+
+.watch{
+    position: relative;
+    font-size: 1.7rem;
+}
+
+.watch option{
+    font-size: 1.5rem;
+}
+
+.watch button{
+    background: none;
+    position: absolute;
+    border: none;
+    right: 4rem;
+    top: .8rem;
+    color: #445baa;
+    font-size: 1.6rem;
+}
+
+/*------------------------------------------------------------
+	TEST
+-------------------------------------------------------------*/
+
+
+.selectBox {
+    position: relative;
+}
+
+.selectBox select{
+    width: 100%;
+}
+
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#checkBoxes {
+    display: none;
+    border: .1rem #8DF5E4 solid;
+}
+
+#checkBoxes label {
+    display: block;
+}
 
 
 /*------------------------------------------------------------
@@ -119,11 +187,12 @@ body{
 .body-card{
     background-color: #f9fff0;
     border-radius: 3rem;
+    height: 100%;
 }
 
 .corp2{
     margin-top: 3%;
-    padding-bottom: 5%;
+    /* padding-bottom: 10%; */
 }
 
 .date h1{
@@ -221,8 +290,7 @@ body{
 
 .apply:hover{
     color: #aed373;
-    border: .2rem solid #aed373;
-    background: none;
+    background: #ffffff;
 }
 
 .owl-prev span, .owl-next span {
@@ -276,7 +344,7 @@ body{
 
 .milieu{
     padding-bottom: 3rem;
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
 
 .job-new-list{
@@ -351,6 +419,39 @@ body{
 }
 
 /*------------------------------------------------------------
+	RECOMMEND
+-------------------------------------------------------------*/
+
+.recommend .card{
+    padding: 2rem;
+    background-color: #445baa;
+    border: none;
+    border-radius: .5rem;
+}
+
+.recommend .card p{
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.skill{
+    padding: 2rem;
+    background-color: #f9fff0;
+    border: none;
+    border-radius: .5rem;
+}
+
+.skill h3{
+    font-weight: 600;
+}
+
+.skill p{
+    font-size: 1.2rem;
+}
+
+/*------------------------------------------------------------
 	FOOTER
 -------------------------------------------------------------*/
 
@@ -396,3 +497,19 @@ body{
 
 
 
+
+@media only screen and (max-width: 769px){
+
+    .hero {
+        background-color: #edfaff;
+        height: 90vh;
+    }
+
+    .hero img{
+       width: 100%;
+       display: none;
+    }
+
+    
+    
+}
