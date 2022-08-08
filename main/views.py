@@ -122,7 +122,6 @@ class AdFilterClass(View):
         return render(request, 'search.html', context={'form':form,'page_obj':page_obj, 'latest':latest, 'category':category, 'skills':skills, 'job_type':job_type, 'state':state, 'url1':url1, 'city_list':city_list, 'city':city})
 
 
- 
 def suggest_api(request):
     search = request.GET.get('search')
     type_search = request.GET.get('type_search')
