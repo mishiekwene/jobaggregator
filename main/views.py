@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from .forms import SkillSearchForm, FilterForm
 import re
 from urllib.parse import urlencode
-
+from json import dumps
 # Create your views here.
 class HomeView(View):
     def get(self, request):
@@ -31,9 +31,10 @@ class SearchView(View):
 class FilterView(View):
     form_class = SkillSearchForm
     def get(self, request):
-        form = self.form_class()
         category = request.GET.get('category')
-        skills = request.GET.getlist('searches')
+        skills = request.GET.getlist("searches")
+        skills_2 = dumps(skills)
+
         if not skills:
             return redirect('main:search')
         skill_list = []
@@ -44,11 +45,12 @@ class FilterView(View):
 
         elif len(skills)>=1:
             if category=='hard_skill' or category=='soft_skill':
-                jobs = Jobs.objects.filter(description__search=skill_list).order_by('-time_extracted')
+                jobs = Jobs.objects.filter(description__search=skills_2).order_by('-time_extracted')
 
 
             elif category=='job_role':
-                jobs = Jobs.objects.filter(title__search=skills).order_by('-time_extracted')
+                print(skills[0])
+                jobs = Jobs.objects.filter(title__contains=skills[0]).order_by('-time_extracted')
 
 
         
@@ -67,15 +69,16 @@ class AdFilterClass(View):
     def get(self, request):
         form = self.form_class()
         category = request.GET.get('cat')
-        skills = request.GET.getlist('skill')
+        skills = request.GET.getlist("skill")
         job_type = request.GET.get('job_type')
         state = request.GET.getlist('state')
-        city = request.GET.getlist('city')
-
+        skills_2 = dumps(skills)
+        city = request.GET.get('city')
 
         skill_list = []
         for i in skills:
             skill_list.append(re.sub(r'(\b\w+\b)', r'+\1', i))
+            
         if len(skills)==0:
             jobs = Jobs.objects.all()
             if job_type:
@@ -85,32 +88,27 @@ class AdFilterClass(View):
                 jobs = jobs.filter(state__in=state)
             if city:
                 jobs = jobs.filter(city__in=city)
-
         elif len(skills)>=1:
             if category=='hard_skill' or category=='soft_skill':
                 jobs = Jobs.objects.all()
                 if job_type:
                     if job_type!=5:
-                        jobs = jobs.filter(job_type1=job_type, description__search=skill_list).order_by('-time_extracted')
+                        jobs = jobs.filter(job_type1=job_type, description__search=skills_2).order_by('-time_extracted')
                 if state:
-                    jobs = jobs.filter(state__in = state, description__search=skill_list).order_by('-time_extracted')
+                    jobs = jobs.filter(state__in = state, description__search=skills_2).order_by('-time_extracted')
                 if city:
-                    jobs = jobs.filter(city__in = city, description__search=skill_list).order_by('-time_extracted')
-
+                    jobs = jobs.filter(city__in = city, description__search=skills_2).order_by('-time_extracted')
 
             elif category=='job_role':
                 jobs = Jobs.objects.all()
                 if job_type:
                     if job_type!=5:
-                        jobs = jobs.filter(job_type1=job_type, title__search=skill_list).order_by('-time_extracted')
+                        jobs = jobs.filter(job_type1=job_type, title__contains=skills[0]).order_by('-time_extracted')
                 if state:
-                    jobs = jobs.filter(state__in = state, title__search=skill_list).order_by('-time_extracted')
+                    jobs = jobs.filter(state__in = state, title__contains=skills[0]).order_by('-time_extracted')
                 if city:
-                    jobs = jobs.filter(city__in = city, title__search=skill_list).order_by('-time_extracted')
+                    jobs = jobs.filter(city__in = city, title__contains=skills[0]).order_by('-time_extracted')
 
-
-
-        
         paginator = Paginator(jobs, 10)
         page_number = request.GET.get('page')
         page_obj =paginator.get_page(page_number)
