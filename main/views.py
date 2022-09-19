@@ -73,7 +73,7 @@ class AdFilterClass(View):
         job_type = request.GET.get('job_type')
         state = request.GET.getlist('state')
         skills_2 = dumps(skills)
-        city = request.GET.get('city')
+        city = request.GET.getlist('city')
 
         skill_list = []
         for i in skills:
